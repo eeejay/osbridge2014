@@ -1,0 +1,691 @@
+<!DOCTYPE HTML>
+<!-- <html lang="en-US"> -->
+<html lang="en-US" class="fade">
+<!-- 
+  ^ a class of "fade" makes slides fade smoothly into one another
+ -->
+<!-- <html lang="en-US" class="nonumbers"> -->
+<!-- 
+  If you want no numbers on the slides add a "nonumbers" class 
+  to the HTML element.
+  Adding a class of "fade" will make slides fade into another. 
+-->
+<head>
+  <meta charset="UTF-8">
+  <title>Making your mobile web app accessible</title>
+<!-- 
+  If you upload your slides to the web, ensure that you have 
+  a good title - this shows up in search results and social
+  media links
+ -->
+  <meta name="viewport" content="width=device-width, user-scalable=yes">
+  <link rel="stylesheet" href="themes/mozilla/styles/prism.css">
+  <link rel="stylesheet" href="themes/mozilla/styles/style.css">
+  <style>
+    pre.language-markup {
+      background: none;
+      //font-size: 30px;
+      font-weight: 700;
+    }
+
+    pre.language-markup code:before {
+      display: none;
+    }
+  </style>
+</head>
+<body class="list">
+  <header class="caption">
+    <h1>Making your mobile web app accessible</h1>
+    <p class="footer">
+      Eitan Isaacson, 
+      <a href="http://twitter.com/eeejay">@eeejay</a>
+    </p>
+  </header>
+  <aside class="talkdescription">
+    <p>This slide deck is using the shower system - roll over the previews to see the notes and click any slide to go into presentation mode. Then use keys to navigate. <button onclick="goFullScreen()">Go fullscreen</button></p>
+    <p class="abstract">
+      <strong>Abstract: </strong>
+      Instead of the siloed app stores and developer SDKs of mobile yesteryears, the future will be bright and shiny for the mobile web, and the rich apps that it will bring. But how do you assure that your mobile web app is accessible to everyone? In this presentation we will start with the common best practices every web developer should know, and then move to explore the frontiers of mobile web accessibility. We will also cover the hacks and techniques we have been employing to make Firefox OS accessible to visually impaired users.
+    </p>
+  </aside>
+
+<!-- 
+    Simply copy the whole block for each slide you want.
+  Special slides get extra classes. Each slide needs an ID 
+  to allow for bookmarking and target jumping.
+-->
+
+  <div id="cover" class="slide"><div>
+    <section>
+      <header>
+        <h2>Accessibility</h2>
+      </header>
+      <p>"It's Important"</p>
+      <small class="byline">
+        Eitan Isaacson, Open Source Bridge, Portland, June 26th, 2014
+      </small>
+      <footer class="notes">
+        This is a simple cover slide with an image in the middle
+      </footer>
+    </section>
+  </div></div>
+
+<!-- end slide block -->
+
+  <div id="disclaimers" class="slide"><div>
+    <section>
+      <header>
+        <h2>Disclaimers</h2>
+      </header>
+      <ul>
+        <li>I'm not a lawyer</li>
+        <li>I'll be talking from a perspective of a certain Mozilla product</li>
+        <li>My focus is on visual impairment</li>
+      </ul>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+
+  <div id="intro" class="slide"><div>
+    <section>
+      <header>
+        <h2>Some Background</h2>
+      </header>
+      <p></p>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>  
+
+  <div id="brokenpromise" class="slide"><div>
+    <section>
+      <header>
+        <h2>Broken promises</h2>
+      </header>
+      <img src="pictures/fxos/html5promise.png" class="middle"
+           alt="Smartphone equals HTML5">
+
+    <footer class="notes">
+      When a certain company very loudly proclaimed that the desktop is dead 
+      and smartphones are the future and that HTML5 is the new standard to 
+      power smartphones we were very happy and interested indeed. Finally 
+      web standards got a platform that is on the bleeding edge and very 
+      beautiful and we all were ready to chip in to make this an open 
+      experience that empowers everyone to build for these new devices.
+    </footer>
+
+    </section>
+  </div></div>
+
+  <div id="firefoxos" class="slide"><div>
+    <section>
+      <header>
+        <h2>Firefox OS</h2>
+      </header>
+      <img src="pictures/fxos/firefoxos.png"
+           alt="Firefox OS"
+           class="middle" height="450">
+    <footer class="notes">
+      This is the intro slide to Firefox OS - explain that it is a new operating system, one completely based on open web technologies and aimed at the markets that others don't cover. Both fulfilling the promises made by other platforms and following the principles defined in the Mozilla Manifesto.
+    </footer>
+    </section>
+  </div></div>
+
+   <div id="webtech" class="slide cover w"><div>
+    <section>
+      <header>
+      </header>
+      <img src="pictures/fxos/fxos_insides.png"
+           alt="Firefox OS dialer app in desktop Firefox with devtools" 
+           class="middle shadow" height="450">
+    <footer class="notes">
+      Firefox OS is not another closed platform. Everything in the OS is open web technology and based on proposals to the standards bodies. This means the research we did by building Firefox OS and the research you do by making your apps work on it gets fed back to Firefox on Desktop and all the other browsers, too, making the web a better place.
+    </footer>
+    </section>
+  </div></div>
+
+   <div id="nativeexpectations" class="cover slide autoplay"><div>
+    <section>
+      <header>
+        Native Expectations
+      </header>
+      <video muted loop class="middle shadow" style="transform: rotate(180deg) translateX(60%) scale(1.1);">
+        <source src="videos/native_expectations.mp4" type="video/mp4"></source>
+      </video>
+    <footer class="notes">
+      While we build a new mobile platform from the ground up using webby technologies, the expectations of a slick experience remains the same as what users have seen on native.
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="nativea11yexpectations" class="slide oneline"><div>
+    <section>
+      <header>
+        <h2>Native<br/> <strong>Accessibility</strong><br/> Expectations</h2>
+      </header>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="whattheysay" class="slide"><div>
+    <section>
+      <header>
+        <h2>Web Accessibility Expectations</h2>
+      </header>
+      <blockquote>
+        <p>Thanks for that link, it was a very interesting article!</p>
+        <p class="byline">What a happy blind web surfer says</p>
+      </blockquote>
+      <footer class="notes">
+        If a user with a disability is capable to access a resource online unaided, it is considered a success.
+      </footer>
+    </section>
+  </div><button class="cb">x</button></div>
+
+  <div id="whattheymean" class="slide"><div>
+    <section>
+      <header>
+        <h2>Web Accessibility Expectations</h2>
+      </header>
+      <blockquote class="lots" style="font-size: 25px;">
+        <p>Once the page loaded, I had to rummage through endless lists, unlabeled images, useless links, a search, and a sign-in form. I then reached the actual article where each paragraph was interrupted by social network share buttons and more unlabeled images.
+        Mid-article, I figured out that I needed to press a link that consisted of two greater-than characters to read the rest, not before I, once again, sifted past all the useless navigation links, mute images, and forms. But after all that I must say: very interesting article!</p>
+        <p class="byline">What a happy blind web surfer means</p>
+      </blockquote>
+      <footer class="notes">
+        Users are forgiving when it comes to infrequent tasks, like visiting a site for the first and only time. The web is still enabling and miraculous, and users with disabilities, unfortunately, are accustomed to inconvenience.
+      </footer>
+    </section>
+  </div><button class="cb">x</button></div>
+
+  <div id="wonder" class="slide"><div>
+    <section>
+      <header>
+        <h2>Native Accessibility Expectations</h2>
+      </header>
+      <img src="pictures/a11y/wonder.jpg"
+           alt="Stevie Wonder with an iPhone"
+           class="middle shadow">
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="nativea11yexpectations2" class="cover slide autoplay"><div>
+    <section>
+      <header>
+        Native A11y Expectations
+      </header>
+      <video loop class="middle shadow" style="">
+        <source src="videos/screenreader.mp4" type="video/mp4"></source>
+      </video>
+    <footer class="notes">
+      While we build a new mobile platform from the ground up using webby technologies, the expectations of a slick experience remains the same as what users have seen on native.
+    </footer>
+    </section>
+  </div></div>
+
+
+  <div id="word-on-design" class="slide oneline"><div>
+    <section>
+      <header>
+        <h2>A word on design</h2>
+      </header>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="sixty-seconds-of-common-sense" class="slide"><div>
+    <section>
+      <header>
+        <h2>Some advice in 60 seconds</h2>
+      </header>
+      <p style="opacity: 0.5; font-size: 300px; line-height: 1em; text-align: center;" id="countdown"></p>
+      <script>
+        var intervalid = 0;
+        addEventListener('hashchange',
+          function(e) {
+            if (e.newURL.indexOf('#sixty-seconds-of-common-sense') > -1) {
+              var countdown = 60;
+              var p = document.getElementById('countdown');
+              intervalid = setInterval(function() {
+                p.textContent = countdown--;
+                if (countdown < 0)
+                  clearInterval(intervalid);
+              }, 1000);
+              console.log(e);
+            } else if (e.oldURL.indexOf('#sixty-seconds-of-common-sense') > -1) {
+              clearInterval(intervalid);
+            }
+          });
+      </script>
+      <footer class="notes">
+        = Perceivable =
+        * Provide text alternatives for non-text content
+        * Caption videos
+        * Don't rely on color alone to convey information, or any other visual characteristics, for that matter.
+        * Don't rely on sound
+        * Structure your page semantically, use headings, nav elements, footers, etc. Don't use tables for layout.
+        * Provide label/control relationships (the "for" label attribute)
+        * Meet minimal color contrast requirements
+        * Allow, and design for adjustable text size
+
+        = Operable =
+        * All functionality needs to be reachable by keyboard
+        * Make sure that focus does not get "trapped"
+        * Avoid making interactions time-sensitive
+        * Avoid seizures inducing flashing
+        * Provide ways to help users navigate, find content and determine where they are.
+        * Title links
+
+        = Understandable =
+        * Help the user avoid mistakes, and be forgivable
+        * Avoid big words and complex sentances
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="wcag2" class="slide"><div>
+    <section>
+      <header>
+        <h2>WCAG 2.0</h2>
+      </header>
+      <p><a href="http://www.w3.org/TR/WCAG20/">Web Content Accessibility Guidelines 2.0</a></p>
+      <footer class="notes">
+        If you want to dwell on any of that, please check out the Web Content Accessibility Guidelines.
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="nativeexpectations2" class="slide oneline"><div>
+    <section>
+      <header>
+        <h2>Native Expectations</h2>
+      </header>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+   <div id="aria" class="slide"><div>
+    <section>
+      <header>
+        <h2>WAI-ARIA</h2>
+      </header>
+        <pre class="language-markup" style="">
+        <code><div role="checkbox" aria-checked="true"></div></code>
+        </pre>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+   <div id="aria-tree" class="slide"><div>
+    <section>
+      <header>
+        <h2>A More complex example</h2>
+      </header>
+      <style scoped>
+      ul {
+        color: #FFF;
+        font-weight: bold;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      ul[role="tree"] {
+        margin: auto;
+        padding: 0;
+      }
+
+      li[role="treeitem"] {
+        background-color: #FF0080;
+        padding: 1rem;
+        margin-bottom: 1rem;
+      }
+      li[role="treeitem"] li[role="treeitem"] {
+        background-color: #800080;
+      }
+
+      li[role="treeitem"] li[role="treeitem"] li[role="treeitem"] {
+        background-color: #FF0080;
+      }
+
+      li[role="treeitem"] > span {
+        padding-left: 2rem;
+      }
+
+      li[role="treeitem"][aria-expanded="false"] > ul {
+        display: none;
+      }
+
+      li[role="treeitem"][aria-expanded="true"] > ul {
+        display: block;
+      }
+
+      li[role="treeitem"][aria-expanded="true"]:before {
+        content: '';
+        width: 0;
+        height: 0;
+        border-top: 1rem solid;
+        border-left: 1rem solid transparent;
+        border-right: 1rem solid transparent;
+        position: absolute;
+      }
+
+      li[role="treeitem"][aria-expanded="false"]:before {
+        content: '';
+        width: 0;
+        height: 0;
+        border-top: 1rem solid transparent;
+        border-bottom: 1rem solid transparent;
+        border-left: 1rem solid;
+        position: absolute;
+      }
+
+      li[role="treeitem"][aria-selected="true"] {
+        color: yellow;
+      }
+
+    </style>
+
+    <h1 id="animals-header">Animals</h1>
+    <ul aria-labelledby="animals-header" role="tree">
+        <li id="bilateria-group-label" role="treeitem" aria-expanded="false"><span>Bilateria</span>
+            <ul id="bilateria-group" role="group" aria-labelledby="bilateria-group-label">
+                <li id="protostome-group-label" role="treeitem" aria-expanded="false"><span>Protostome</span>
+                    <ul id="protostome-group" role="group" aria-labelledby="protostome-group-label">
+                        <li id="spiralia" role="treeitem">Spiralia</li>
+                        <li id="cycloneuralia" role="treeitem">Cycloneuralia</li>
+                    </ul>
+                </li>
+                <li id="deuterostome-group-label" role="treeitem" aria-expanded="false"><span>Deuterostome</span>
+                    <ul id="deuterostome-group" role="group" aria-labelledby="deuterostome-group-label">
+                        <li id="phoronida" role="treeitem">Phoronida</li>
+                        <li id="brachiopoda" role="treeitem">Brachiopoda</li>
+                        <li id="pterobranchia" role="treeitem">Pterobranchia</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li id="cnidaria-group-label" role="treeitem" aria-expanded="false"><span role="presentation">Cnidaria</span>
+            <ul id="cnidaria-group" role="group" aria-labelledby="cnidaria-group-label">
+                <li id="anthozoa" role="treeitem">Anthozoa</li>
+                <li id="medusozoa" role="treeitem">Medusozoa</li>
+            </ul>
+        </li>
+    </ul>
+    <script type="text/javascript">
+        var treeItems = document.querySelectorAll('li[role="treeitem"]');
+
+        function toggleAttr(elem, attr) {
+            elem.setAttribute(attr, elem.getAttribute(attr) !== 'true');
+        }
+
+        Array.prototype.forEach.call(treeItems, function(treeItem) {
+            treeItem.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleAttr(treeItem,
+                    e.currentTarget.hasAttribute('aria-expanded') ?
+                        'aria-expanded' : 'aria-selected');
+            });
+        });
+    </script>      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="visibility" class="slide"><div>
+    <section>
+      <header>
+        <h2>Visibility and Object Persistence</h2>
+      </header>
+      <ul>
+        <li>CSS
+          <ul>
+          <li>visibility: hidden;</li>
+          <li>display: none;</li>
+          </ul>
+        </li>
+        <li>DOM
+          <ul>
+          <li>element.removeChild(child);</li>
+          </ul>
+        </li>
+        <li>Last resort ARIA
+          <ul>
+          <li>aria-hidden=true</li>
+          </ul>
+        </li>
+      </ul>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="visibility-css" class="slide"><div>
+    <section>
+      <header>
+        <h2>visibility: hidden;</h2>
+      </header>
+      <style>
+        #peek-a-boo {
+          position: relative;
+          height: 200px;
+          width: 380px;
+          float: left;
+        }
+
+        #peek-a-boo-demo-style {
+          width: calc(100% - 400px);
+          float: left;
+          padding: 0;
+          font-size: 18px;
+          margin-left: 10px;
+        }
+
+        #peek-a-boo > div,  #peek-a-boo > img{
+          position: absolute;
+          display: block;
+        }
+        #hands {
+          width: 300px;
+          height: 300px;
+          left: 0;
+          top: 2em;
+        }
+        #face {
+          width: 150px;
+          height: 150px;
+          left: 75px;
+          top: calc(2em + 50px);
+        }
+      </style>
+      <div id="peek-a-boo">
+        <input type="checkbox" id="peek-a-boo-checkbox"><label for="peek-a-boo-checkbox"> Peek-a-boo!</label>
+        <img src="pictures/a11y/BabyFace.gif" id="face" alt="Face">
+        <img src="pictures/a11y/hands.png" id="hands" alt="Hands">
+      </div>
+      <style id="peek-a-boo-demo-style" contenteditable>#hands {
+  opacity: 1;
+}
+#face {
+  transition: all 0.5s ease;
+}
+input:not(:checked) ~ #face {
+  transform: translateX(200px);
+}
+input:checked ~ #face {
+  transform: translateX(0px);
+}</style>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="visibility-challenges" class="slide"><div>
+    <section>
+      <header>
+        <h2>Visibility Challenges</h2>
+      </header>
+      <ul>
+        <li>Modal dialogs</li>
+        <li>Fixed headers/footers</li>
+      </ul>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="showing-stuff" class="slide"><div>
+    <section>
+      <header>
+        <h2>Proactively Showing Stuff</h2>
+      </header>
+      <style>
+        input#show-dialog:checked ~ #dialog-demo {
+          opacity: 1.0;
+          visibility: visible;
+        }
+
+        #dialog-demo {
+          width: 80%;
+          border: 1px solid black;
+          box-shadow: 5px 5px #000;
+          padding: 1em;
+          text-align: center;
+          visibility: hidden;
+          opacity: 0.0;
+          transition: all 0.5s ease;
+        }
+
+      </style>
+      <input type="checkbox" id="show-dialog">
+      <label for="show-dialog"> Show dialog</label>
+      <div id="dialog-demo">
+        <span>New message arrived!</span><br/>
+        <button>Show message</button>
+      </div>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="input-challenges" class="slide"><div>
+    <section>
+      <header>
+        <h2>Input Challenges</h2>
+      </header>
+      <ul>
+        <li>Click</li>
+        <li>Everything else</li>
+      </ul>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="click" class="slide"><div>
+    <section>
+      <header>
+        <h2>Click - It Works With Caveats</h2>
+      </header>
+      <ul>
+        <li>Click target and widget need to match</li>
+        <li>There is no full event chain so weird things happen:
+        <ul>
+          <li>Obscured objects get clicked</li>
+          <li>pointer-events: none is ignored</li>
+        </ul>
+        </li>
+      </ul>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="everything-besides-click" class="slide"><div>
+    <section>
+      <header>
+        <h2>Everything Besides Click</h2>
+      </header>
+      <ul>
+        <li>Zoom in/out</li>
+        <li>Undo/redo</li>
+        <li>Expand/collapse</li>
+        <li>Drag/drop</li>
+        <li>Pan</li>
+        <li>Rotate</li>
+        <li>Adjust value</li>
+        <li>Move between pages</li>
+        <li>Things I didn't think about</li>
+      </ul>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="indieui" class="slide"><div>
+    <section>
+      <header>
+        <h2>IndieUI: Events</h2>
+      </header>
+      <p>
+        Separate input from intent.
+      </p>
+      <p>Example: User does platform zoom gesture, DOM event with zoom request is fired.</p>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="input-tricks" class="slide"><div>
+    <section>
+      <header>
+        <h2>Our own input hacks</h2>
+      </header>
+      <ul>
+        <li>DOM wheel event</li>
+        <li>Arrow key up/down</li>
+      </ul>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="thanks" class="slide"><div>
+    <section>
+      <header>
+        <h2>Thanks</h2>
+      </header>
+      <img src="pictures/mozillaoverview/redpanda.jpg" class="right" alt="Red panda (Firefox)">
+      <ul class="nobull">
+        <li>Eitan Isaacson</li>
+        <li>{<a href="http://twitter.com/eeejay">@eeejay</a>}</li>
+      </ul>
+      <small class="credits">
+        <a href="http://www.flickr.com/photos/yortw/5798336827/">Photo by Yortw</a>
+      </small>
+
+    <footer class="notes">
+    </footer>
+
+    </section>
+  </div></div>
+
+  <!--
+    To hide progress bar from entire presentation
+    just remove “progress” element.
+    -->
+  <div class="progress"><div></div></div>
+  <script src="scripts/script.js"></script>
+  <script src="scripts/prism.js"></script>
+  <!-- Copyright © 2010–2012 Vadim Makeev — pepelsbey.net -->
+</body>
+</html>
